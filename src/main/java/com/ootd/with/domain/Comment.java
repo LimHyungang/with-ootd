@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,6 +28,8 @@ public class Comment {
     private String content;
 
     @Column(name = "comment_like_count")
-    private int likeCount;
+    private int likeyCount;
 
+    @OneToMany(mappedBy = "comment")
+    private List<CommentLikey> likeys = new ArrayList<>();
 }

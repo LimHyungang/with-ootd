@@ -34,5 +34,8 @@ public class Post {
     private String content;
 
     @Column(name = "post_like_count")
-    private int likeCount;
+    private int likeyCount;
+
+    @OneToMany(mappedBy = "post")
+    private List<PostLikey> likeys = new ArrayList<>();
 }
