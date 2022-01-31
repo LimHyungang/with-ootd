@@ -33,7 +33,7 @@ public class Post {
     @Column(name = "post_content")
     private String content;
 
-    @Column(name = "post_like_count")
+    @Column(name = "post_likey_count")
     private int likeyCount;
 
     @OneToMany(mappedBy = "post")

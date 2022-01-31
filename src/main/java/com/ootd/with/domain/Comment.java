@@ -27,7 +27,7 @@ public class Comment {
     @Column(name = "comment_content")
     private String content;
 
-    @Column(name = "comment_like_count")
+    @Column(name = "comment_likey_count")
     private int likeyCount;
 
     @OneToMany(mappedBy = "comment")
