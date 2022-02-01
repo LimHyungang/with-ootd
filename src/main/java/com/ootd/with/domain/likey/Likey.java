@@ -1,12 +1,15 @@
 package com.ootd.with.domain.likey;
 
 import com.ootd.with.domain.member.Member;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DiscriminatorColumn
+@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
 public abstract class Likey {
 
     @Id @GeneratedValue
@@ -16,4 +19,8 @@ public abstract class Likey {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    public Likey(Member member) {
+        this.member = member;
+    }
 }
