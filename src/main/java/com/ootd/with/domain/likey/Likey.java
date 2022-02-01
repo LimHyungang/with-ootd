@@ -1,4 +1,6 @@
-package com.ootd.with.domain;
+package com.ootd.with.domain.likey;
+
+import com.ootd.with.domain.member.Member;
 
 import javax.persistence.*;
 

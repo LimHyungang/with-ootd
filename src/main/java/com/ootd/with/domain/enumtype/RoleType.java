@@ -1,4 +1,4 @@
-package com.ootd.with.domain;
+package com.ootd.with.domain.enumtype;
 
 public enum RoleType {
     GUEST, MEMBER, ADMIN

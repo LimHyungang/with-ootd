@@ -1,5 +1,8 @@
-package com.ootd.with.domain;
+package com.ootd.with.domain.comment;
 
+import com.ootd.with.domain.post.Post;
+import com.ootd.with.domain.likey.CommentLikey;
+import com.ootd.with.domain.member.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
