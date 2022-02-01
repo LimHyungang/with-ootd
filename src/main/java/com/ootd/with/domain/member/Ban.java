@@ -1,14 +1,13 @@
 package com.ootd.with.domain.member;
 
-import com.ootd.with.domain.member.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
 @NoArgsConstructor
+@Entity
 public class Ban {
 
     @Id @GeneratedValue
@@ -19,5 +18,5 @@ public class Ban {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    private Long banUserId;
+    private Long banMemberId;
 }

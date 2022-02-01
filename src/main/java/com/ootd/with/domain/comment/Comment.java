@@ -3,6 +3,7 @@ package com.ootd.with.domain.comment;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.likey.CommentLikey;
 import com.ootd.with.domain.member.Member;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,9 +11,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Getter
 @NoArgsConstructor
+@Entity
 public class Comment {
 
     @Id @GeneratedValue
@@ -33,6 +34,14 @@ public class Comment {
     @Column(name = "comment_likey_count")
     private int likeyCount;
 
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
     private List<CommentLikey> likeys = new ArrayList<>();
+
+    @Builder
+    public Comment(Member member, Post post, String content, int likeyCount) {
+        this.member = member;
+        this.post = post;
+        this.content = content;
+        this.likeyCount = likeyCount;
+    }
 }
