@@ -1,5 +1,6 @@
-package com.ootd.with.domain;
+package com.ootd.with.domain.member;
 
+import com.ootd.with.domain.member.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

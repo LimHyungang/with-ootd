@@ -1,5 +1,9 @@
-package com.ootd.with.domain;
+package com.ootd.with.domain.member;
 
+import com.ootd.with.domain.comment.Comment;
+import com.ootd.with.domain.post.Post;
+import com.ootd.with.domain.enumtype.RoleType;
+import com.ootd.with.domain.enumtype.SexType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

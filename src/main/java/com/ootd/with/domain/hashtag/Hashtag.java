@@ -1,4 +1,4 @@
-package com.ootd.with.domain;
+package com.ootd.with.domain.hashtag;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
