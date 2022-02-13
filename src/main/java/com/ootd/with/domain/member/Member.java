@@ -55,6 +55,10 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Ban> banList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member")
+    private List<Bookmark> bookmarkList = new ArrayList<>();
+
+
     @Builder
     public Member(String name, String password, String email, String firstPhoneNumber, String midPhoneNumber, String lastPhoneNumber, SexType sex, RoleType roleType, String nickName) {
         this.name = name;
