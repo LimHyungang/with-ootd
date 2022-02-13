@@ -30,7 +30,7 @@ public class Post {
     private Board board;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> commentList = new ArrayList<>();
 
     private String title;
 
@@ -42,10 +42,10 @@ public class Post {
     private int likeyCount;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<PostLikey> likeys = new ArrayList<>();
+    private List<PostLikey> likeyList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<PostHashtag> postHashtags = new ArrayList<>();
+    private List<PostHashtag> hashtagList = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private StatusType statusType;

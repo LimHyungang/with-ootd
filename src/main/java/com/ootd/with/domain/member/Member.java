@@ -44,14 +44,16 @@ public class Member {
     private String nickName;
 
     @OneToMany(mappedBy = "member")
-    private List<Post> posts = new ArrayList<>();
+    private List<Post> postList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> commentList = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private StatusType statusType;
 
+    @OneToMany(mappedBy = "member")
+    private List<Ban> banList = new ArrayList<>();
 
     @Builder
     public Member(String name, String password, String email, String firstPhoneNumber, String midPhoneNumber, String lastPhoneNumber, SexType sex, RoleType roleType, String nickName) {

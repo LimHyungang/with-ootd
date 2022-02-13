@@ -35,7 +35,7 @@ public class Comment {
     private int likeyCount;
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
-    private List<CommentLikey> likeys = new ArrayList<>();
+    private List<CommentLikey> likeyList = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private StatusType statusType;

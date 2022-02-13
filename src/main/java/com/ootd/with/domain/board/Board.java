@@ -23,7 +23,7 @@ public class Board {
     private String name;
 
     @OneToMany(mappedBy = "board")
-    private List<Post> posts = new ArrayList<>();
+    private List<Post> postList = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private StatusType statusType;
