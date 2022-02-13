@@ -2,8 +2,7 @@ package com.ootd.with.domain.post;
 
 import com.ootd.with.domain.board.Board;
 import com.ootd.with.domain.comment.Comment;
-import com.ootd.with.domain.hashtag.PostHashtag;
-import com.ootd.with.domain.likey.PostLikey;
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +30,7 @@ public class Post {
     private Board board;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> commentList = new ArrayList<>();
 
     private String title;
 
@@ -43,10 +42,13 @@ public class Post {
     private int likeyCount;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<PostLikey> likeys = new ArrayList<>();
+    private List<PostLikey> likeyList = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<PostHashtag> postHashtags = new ArrayList<>();
+    private List<PostHashtag> hashtagList = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private StatusType statusType;
 
     @Builder
     public Post(Member member, Board board, String title, String content, int likeyCount) {

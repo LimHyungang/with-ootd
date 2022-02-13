@@ -8,22 +8,18 @@ import com.ootd.with.domain.enumtype.RoleType;
 import com.ootd.with.domain.enumtype.SexType;
 import com.ootd.with.domain.hashtag.Hashtag;
 import com.ootd.with.domain.hashtag.HashtagRepository;
-import com.ootd.with.domain.hashtag.PostHashtag;
-import com.ootd.with.domain.hashtag.PostHashtagRepository;
+import com.ootd.with.domain.post.PostHashtag;
+import com.ootd.with.domain.post.PostHashtagRepository;
 import com.ootd.with.domain.member.Member;
 import com.ootd.with.domain.member.MemberRepository;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.post.PostRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class DomainTest {

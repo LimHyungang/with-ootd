@@ -1,7 +1,8 @@
-package com.ootd.with.domain.likey;
+package com.ootd.with.domain.comment;
 
+import com.ootd.with.domain.comment.Comment;
+import com.ootd.with.domain.likey.Likey;
 import com.ootd.with.domain.member.Member;
-import com.ootd.with.domain.post.Post;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -13,16 +14,15 @@ import javax.persistence.ManyToOne;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class PostLikey extends Likey {
+public class CommentLikey extends Likey {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
-    private Post post;
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 
     @Builder
-    public PostLikey(Member member, Post post) {
+    public CommentLikey(Member member, Comment comment) {
         super(member);
-        this.post = post;
+        this.comment = comment;
     }
 }
-

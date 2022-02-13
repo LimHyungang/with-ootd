@@ -1,5 +1,6 @@
 package com.ootd.with.domain.board;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +23,10 @@ public class Board {
     private String name;
 
     @OneToMany(mappedBy = "board")
-    private List<Post> posts = new ArrayList<>();
+    private List<Post> postList = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private StatusType statusType;
 
     @Builder
     public Board(String name) {
