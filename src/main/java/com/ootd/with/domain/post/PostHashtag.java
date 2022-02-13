@@ -1,5 +1,6 @@
-package com.ootd.with.domain.hashtag;
+package com.ootd.with.domain.post;
 
+import com.ootd.with.domain.hashtag.Hashtag;
 import com.ootd.with.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;

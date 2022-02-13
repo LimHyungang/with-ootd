@@ -2,8 +2,7 @@ package com.ootd.with.domain.post;
 
 import com.ootd.with.domain.board.Board;
 import com.ootd.with.domain.comment.Comment;
-import com.ootd.with.domain.hashtag.PostHashtag;
-import com.ootd.with.domain.likey.PostLikey;
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,6 +46,9 @@ public class Post {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<PostHashtag> postHashtags = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private StatusType statusType;
 
     @Builder
     public Post(Member member, Board board, String title, String content, int likeyCount) {

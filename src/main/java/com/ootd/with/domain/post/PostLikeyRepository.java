@@ -1,4 +1,4 @@
-package com.ootd.with.domain.likey;
+package com.ootd.with.domain.post;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,7 +1,7 @@
 package com.ootd.with.domain.member;
 
 import com.ootd.with.domain.comment.Comment;
-import com.ootd.with.domain.hashtag.PostHashtag;
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.enumtype.RoleType;
 import com.ootd.with.domain.enumtype.SexType;
@@ -49,8 +49,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy ="banMember")
-    private List<Ban> banList = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private StatusType statusType;
+
 
     @Builder
     public Member(String name, String password, String email, String firstPhoneNumber, String midPhoneNumber, String lastPhoneNumber, SexType sex, RoleType roleType, String nickName) {

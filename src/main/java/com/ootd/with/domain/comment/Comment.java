@@ -1,7 +1,7 @@
 package com.ootd.with.domain.comment;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
-import com.ootd.with.domain.likey.CommentLikey;
 import com.ootd.with.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,6 +36,9 @@ public class Comment {
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
     private List<CommentLikey> likeys = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private StatusType statusType;
 
     @Builder
     public Comment(Member member, Post post, String content, int likeyCount) {

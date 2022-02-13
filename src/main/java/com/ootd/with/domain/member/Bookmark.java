@@ -1,5 +1,6 @@
 package com.ootd.with.domain.member;
 
+import com.ootd.with.domain.post.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,18 +9,17 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Ban {
+public class Bookmark {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ban_id")
+    @Id @GeneratedValue
+    @Column(name = "bookmark_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member bannedMember;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 }
