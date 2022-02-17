@@ -1,5 +1,6 @@
 package com.ootd.with.domain.board;
 
+import com.ootd.with.domain.BaseTimeEntity;
 import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Board {
+public class Board extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "board_id")

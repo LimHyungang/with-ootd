@@ -1,5 +1,6 @@
 package com.ootd.with.domain.hashtag;
 
+import com.ootd.with.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Hashtag {
+public class Hashtag extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "hashtag_id")

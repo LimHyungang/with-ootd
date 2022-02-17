@@ -1,5 +1,6 @@
 package com.ootd.with.domain.post;
 
+import com.ootd.with.domain.BaseTimeEntity;
 import com.ootd.with.domain.board.Board;
 import com.ootd.with.domain.comment.Comment;
 import com.ootd.with.domain.enumtype.StatusType;
@@ -15,7 +16,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Post {
+public class Post extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "post_id")

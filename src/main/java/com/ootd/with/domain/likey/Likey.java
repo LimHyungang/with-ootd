@@ -1,5 +1,6 @@
 package com.ootd.with.domain.likey;
 
+import com.ootd.with.domain.BaseTimeEntity;
 import com.ootd.with.domain.member.Member;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @DiscriminatorColumn
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-public abstract class Likey {
+public abstract class Likey extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "likey_id")
