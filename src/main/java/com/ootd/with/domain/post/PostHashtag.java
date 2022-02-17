@@ -1,5 +1,6 @@
 package com.ootd.with.domain.post;
 
+import com.ootd.with.domain.BaseTimeEntity;
 import com.ootd.with.domain.hashtag.Hashtag;
 import com.ootd.with.domain.post.Post;
 import lombok.Builder;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class PostHashtag {
+public class PostHashtag extends BaseTimeEntity {
 
     @Id
     @GeneratedValue

@@ -1,5 +1,6 @@
 package com.ootd.with.domain.member;
 
+import com.ootd.with.domain.BaseTimeEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Ban {
+public class Ban extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
