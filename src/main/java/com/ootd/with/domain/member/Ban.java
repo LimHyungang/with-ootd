@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Getter
-@NoArgsConstructor
 @Entity
 public class Ban extends BaseTimeEntity {
 
