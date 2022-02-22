@@ -2,7 +2,6 @@ package com.ootd.with.domain.login;
 
 import com.ootd.with.domain.member.Member;
 import com.ootd.with.domain.member.MemberRepository;
-import com.ootd.with.web.login.LoginForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

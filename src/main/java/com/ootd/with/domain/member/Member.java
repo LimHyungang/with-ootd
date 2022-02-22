@@ -6,7 +6,6 @@ import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.enumtype.RoleType;
 import com.ootd.with.domain.enumtype.SexType;
-import com.ootd.with.web.member.AddMemberForm;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
