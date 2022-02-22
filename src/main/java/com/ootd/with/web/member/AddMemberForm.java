@@ -1,4 +1,4 @@
-package com.ootd.with.domain.member;
+package com.ootd.with.web.member;
 
 import lombok.Data;
 

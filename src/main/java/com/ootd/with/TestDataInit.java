@@ -2,7 +2,7 @@ package com.ootd.with;
 
 import com.ootd.with.domain.enumtype.SexType;
 import com.ootd.with.domain.member.MemberService;
-import com.ootd.with.domain.member.AddMemberForm;
+import com.ootd.with.web.member.AddMemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

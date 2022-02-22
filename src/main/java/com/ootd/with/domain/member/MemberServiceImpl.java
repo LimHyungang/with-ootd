@@ -1,5 +1,6 @@
 package com.ootd.with.domain.member;
 
+import com.ootd.with.web.member.AddMemberForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
