@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface BanRepository extends JpaRepository<Ban, Long> {
 
-    @Query("select b from Ban b where b.member.id = :memberId")
-    List<Ban> findAllByMemberId(@Param("memberId") Long memberId);
+    List<Ban> findAllByMemberId(Long memberId);
 }
