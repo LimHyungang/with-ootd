@@ -1,14 +1,15 @@
 package com.ootd.with.domain.hashtag;
 
 import com.ootd.with.domain.BaseTimeEntity;
+import com.ootd.with.domain.post.Post;
+import com.ootd.with.domain.post.PostHashtag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
