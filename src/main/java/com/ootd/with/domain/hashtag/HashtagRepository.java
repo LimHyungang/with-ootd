@@ -1,5 +1,6 @@
 package com.ootd.with.domain.hashtag;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,6 @@ public interface HashtagRepository extends JpaRepository<Hashtag, Long> {
     List<Hashtag> findAllByPostId(@Param("postId") Long postId);  // 이것도 JPQL 빠져도 알아서 작성해주려나? -> 안 해준다. 기본적으로 Hashtag 테이블을 기준으로만 조회함
 
     // 조인 쿼리를 매번 보내야 하지만 페이징 기능을 사용하기 위해 어쩔 수 없음
-    @Query("select p from PostHashtag ph join ph.post p on ph.hashtag.id = :hashtagId")
-    Page<Post> findPostsByHashtagId(@Param("hashtagId") Long hashtagId, Pageable pageable);
+    @Query("select p from PostHashtag ph join ph.post p on ph.hashtag.id = :id and p.statusType = :type")
+    Page<Post> findPostsByHashtagIdAndStatusType(@Param("id") Long hashtagId, @Param("type") StatusType type, Pageable pageable);
 }

@@ -1,5 +1,6 @@
 package com.ootd.with.domain.hashtag;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import org.springframework.data.domain.Page;
 
@@ -13,5 +14,5 @@ public interface HashtagService {
 
     List<Hashtag> findAllByPostId(Long postId);  // 다건 조회 (post 조회 시)
 
-    Page<Post> findPostsByHashtagId(Long hashtagId, int page, int size);
+    Page<Post> findPostsByHashtagIdAndStatusType(Long hashtagId, StatusType type, int page, int size);
 }

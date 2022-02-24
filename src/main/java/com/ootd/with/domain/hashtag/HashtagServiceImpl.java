@@ -1,5 +1,6 @@
 package com.ootd.with.domain.hashtag;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -48,7 +49,7 @@ public class HashtagServiceImpl implements HashtagService {
      * 해당 hashtag 를 가진 모든 Post 를 조회 (Paging)
      */
     @Override
-    public Page<Post> findPostsByHashtagId(Long hashtagId, int page, int size) {
+    public Page<Post> findPostsByHashtagIdAndStatusType(Long hashtagId, StatusType type, int page, int size) {
         Hashtag hashtag = hashtagRepository.findById(hashtagId).orElse(null);
 
         // null 받으면 해당 hashtag 없음. 호출부에서 예외처리
@@ -58,6 +59,6 @@ public class HashtagServiceImpl implements HashtagService {
 
         // 페이지 비었을 경우 호출부에서 예외처리 필요
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdDate"));
-        return hashtagRepository.findPostsByHashtagId(hashtagId, pageRequest);
+        return hashtagRepository.findPostsByHashtagIdAndStatusType(hashtagId, StatusType.NORMAL, pageRequest);
     }
 }
