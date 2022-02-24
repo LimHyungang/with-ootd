@@ -65,4 +65,12 @@ public class Comment extends BaseTimeEntity {
         // 변경 감지 이용
         this.statusType = StatusType.DELETED;
     }
+
+    public void addLikeyCount() {
+        this.likeyCount++;
+    }
+
+    public void subtractLikeyCount() {
+        this.likeyCount--;
+    }
 }

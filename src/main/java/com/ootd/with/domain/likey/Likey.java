@@ -3,10 +3,12 @@ package com.ootd.with.domain.likey;
 import com.ootd.with.domain.BaseTimeEntity;
 import com.ootd.with.domain.member.Member;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DiscriminatorColumn
 @Inheritance(strategy = InheritanceType.JOINED)

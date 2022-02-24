@@ -60,4 +60,15 @@ public class Post extends BaseTimeEntity {
         this.likeyCount = likeyCount;
     }
 
+    //==연관관계 메서드==//
+    public void addLikeyCount() {
+        // 변경 감지 이용
+        this.likeyCount++;
+    }
+
+    public void subtractLikeyCount() {
+        // 변경 감징 이용
+        this.likeyCount--;
+    }
+
 }
