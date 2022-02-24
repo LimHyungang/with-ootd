@@ -42,10 +42,27 @@ public class Comment extends BaseTimeEntity {
     private StatusType statusType;
 
     @Builder
-    public Comment(Member member, Post post, String content, int likeyCount) {
+    public Comment(Member member, Post post, String content, int likeyCount, StatusType statusType) {
         this.member = member;
         this.post = post;
         this.content = content;
         this.likeyCount = likeyCount;
+        this.statusType = statusType;
+    }
+
+    //==연관 관계 메서드==//
+    public void setPost(Post post) {
+        this.post = post;
+        post.getCommentList().add(this);
+    }
+
+    public void update(String content) {
+        // 변경 감지 이용
+        this.content = content;
+    }
+
+    public void delete() {
+        // 변경 감지 이용
+        this.statusType = StatusType.DELETED;
     }
 }
