@@ -43,6 +43,7 @@ public class CommentServiceImpl implements CommentService {
 
         Comment saveComment = commentRepository.save(comment);
         post.getCommentList().add(saveComment);
+        member.getCommentList().add(saveComment);
         return saveComment.getId();
     }
 
