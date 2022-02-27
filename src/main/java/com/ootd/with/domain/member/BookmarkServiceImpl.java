@@ -20,7 +20,7 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     @Override
     public void bookmark(Long memberId, Long postId) {
-        Bookmark bookmark = findOne(memberId, postId);
+        Bookmark bookmark = findByMemberIdAndPostId(memberId, postId);
         if (bookmark == null) {
             save(memberId, postId);
             return;
@@ -29,7 +29,7 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public Long save(Long memberId, Long postId) {
+    public Bookmark save(Long memberId, Long postId) {
         Member member = memberRepository.findById(memberId).orElse(null);
         Post post = postRepository.findById(postId).orElse(null);
         if (member == null || post == null) {
@@ -41,7 +41,7 @@ public class BookmarkServiceImpl implements BookmarkService {
                                         .build();
         Bookmark saveBookmark = bookmarkRepository.save(bookmark);
         member.getBookmarkList().add(saveBookmark);
-        return saveBookmark.getId();
+        return saveBookmark;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public Bookmark findOne(Long memberId, Long postId) {
+    public Bookmark findByMemberIdAndPostId(Long memberId, Long postId) {
         return bookmarkRepository.findByMemberIdAndPostId(memberId, postId).orElse(null);
     }
 

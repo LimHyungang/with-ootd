@@ -13,8 +13,6 @@ import java.util.Optional;
 public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
     Optional<Bookmark> findByMemberIdAndPostId(Long memberId, Long postId);
 
-    Page<Bookmark> findAllByMember(Member member, Pageable pageable);
-
     @Query("select p from Bookmark b join b.post p where b.member.id = :memberId and p.statusType = :statusType")
     Page<Post> findPostsByMemberId(@Param("memberId") Long memberId, @Param("statusType") StatusType statusType, Pageable pageable);
 }
