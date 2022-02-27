@@ -11,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -63,7 +65,7 @@ class BookmarkServiceTest {
                             .build();
         Post savePost = postRepository.save(post);
 
-        bookmarkService.bookmark(member, post.getId());
+        bookmarkService.bookmark(member.getId(), post.getId());
     }
 
     @Test
@@ -86,8 +88,8 @@ class BookmarkServiceTest {
         assertThat(post).isNotNull();
 
         //when
-        bookmarkService.bookmark(member, post.getId());
-        Bookmark findBookmark = bookmarkService.findOne(member, post.getId());
+        bookmarkService.bookmark(member.getId(), post.getId());
+        Bookmark findBookmark = bookmarkService.findOne(member.getId(), post.getId());
 
         //then
         assertThat(findBookmark).isNotNull();
@@ -105,28 +107,23 @@ class BookmarkServiceTest {
         assertThat(post).isNotNull();
 
         //when
-        bookmarkService.bookmark(member, post.getId());
+        bookmarkService.bookmark(member.getId(), post.getId());
 
         //then
-        assertThat(bookmarkService.findOne(member, post.getId())).isNull();
-        assertThat(bookmarkService.findAllByMember(member).size()).isEqualTo(0);
+        assertThat(bookmarkService.findOne(member.getId(), post.getId())).isNull();
     }
 
+
     @Test
-    @DisplayName("게시판 Bookmark 글 찾기 테스트")
-    public void findBookmarkByBoard() throws Exception {
-        //given
+    @DisplayName("멤버가 북마크한 Post 리스트 가져오기 테스트")
+    void query() {
         Member member = memberRepository.findByEmail("test@test.com").orElse(null);
         assertThat(member).isNotNull();
 
-        //when
-        List<Post> posts = bookmarkService.findPostsByMemberAndBoardId(member, board.getId());
+        PageRequest pageRequest = PageRequest.of(0, 10);
+        Page<Post> posts = bookmarkService.findPostsByMemberId(member.getId(), pageRequest);
 
-        //then
-        assertThat(posts.size()).isEqualTo(1);
-        assertThat(posts.get(0).getBoard().getName()).isEqualTo("OOTD");
+        assertThat(posts.getTotalElements()).isEqualTo(1);
+        assertThat(posts.getContent().get(0).getTitle()).isEqualTo("title");
     }
-
-
-
 }
