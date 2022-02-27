@@ -8,5 +8,5 @@ public interface BanService {
 
     Ban save(Long memberId, Long bannedMemberId);
 
-    void deleteBan(Long banId);
+    void delete(Long banId);
 }
