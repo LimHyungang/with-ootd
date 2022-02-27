@@ -25,7 +25,7 @@ public interface BoardService {
      * void 반환으로 수정
      */
     // Board 단건 수정
-    Board update(Board board, UpdateBoardForm form);
+    void update(Board board, UpdateBoardForm form);
 
     // Board 단건 삭제
     void delete(Board board);

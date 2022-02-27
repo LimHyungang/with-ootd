@@ -144,8 +144,7 @@ public class BoardController {
         if(board == null) {
             // 예외처리
         }
-        Board updatedBoard = boardService.update(board, form);
-        model.addAttribute("board", updatedBoard);
+        boardService.update(board, form);
         return "";  // redirect board list 조회 페이지
     }
 

@@ -73,7 +73,9 @@ class BoardServiceImplTest {
         String oldName = board1.getName();
         StatusType oldType = board1.getStatusType();
         UpdateBoardForm form = new UpdateBoardForm("new name", StatusType.HIDDEN);
-        Board updatedBoard = boardService.update(board1, form);
+
+        boardService.update(board1, form);
+        Board updatedBoard = boardService.findById(board1.getId());
 
         // is equal to form
         assertThat(updatedBoard.getName()).isEqualTo(form.getName());

@@ -48,13 +48,12 @@ public class Board extends BaseTimeEntity {
         return board;
     }
 
-    public Board updateBoard(UpdateBoardForm form) {
+    public void updateBoard(UpdateBoardForm form) {
         // 이건 수정 필요할 듯
         // 이렇게 하면 form 의 null, "" 등도 전부 this 로 넘어감
 //        BeanUtils.copyProperties(form, this);  // 왜 안 되지..?
 
         if(form.getName() != null) this.name = form.getName();
         if(form.getStatusType() != null) this.statusType = form.getStatusType();
-        return this;
     }
 }

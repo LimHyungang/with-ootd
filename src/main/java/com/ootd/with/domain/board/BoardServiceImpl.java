@@ -59,8 +59,8 @@ public class BoardServiceImpl implements BoardService {
      * only for admin
      */
     @Override
-    public Board update(Board board, UpdateBoardForm form) {
-        return board.updateBoard(form);
+    public void update(Board board, UpdateBoardForm form) {
+        board.updateBoard(form);
     }
 
     /**
