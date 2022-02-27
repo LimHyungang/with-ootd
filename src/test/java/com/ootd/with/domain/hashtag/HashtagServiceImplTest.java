@@ -49,27 +49,27 @@ class HashtagServiceImplTest {
         assertThat(hashtagList.size()).isEqualTo(1);
     }
 
-//    @Test
-//    public void findPostsByHashtagIdTest() {
-//        // given
-//        Hashtag hashtag = new Hashtag("hashtag");
-//        hashtagService.save(hashtag);
-//        Post post = new Post();
-//        postRepository.save(post);
-//        PostHashtag ph = new PostHashtag(post, hashtag);
-//        postHashtagRepository.save(ph);
-//
-//        em.flush();
-//        em.clear();
-//
-//        // when
-//        Page<Post> page = hashtagService.findPostsByHashtagId(hashtag.getId(), 0, 5);
-//        List<Post> content = page.getContent();
-//
-//        // then
-//        assertThat(content.size()).isEqualTo(1);
-//        assertThat(page.getTotalPages()).isEqualTo(1);
-//        assertThat(page.getTotalElements()).isEqualTo(1);
-//        assertThat(page.getNumber()).isEqualTo(0);
-//    }
+    @Test
+    public void findPostsByHashtagIdTest() {
+        // given
+        Hashtag hashtag = new Hashtag("hashtag");
+        hashtagService.save(hashtag);
+        Post post = new Post();
+        postRepository.save(post);
+        PostHashtag ph = new PostHashtag(post, hashtag);
+        postHashtagRepository.save(ph);
+
+        em.flush();
+        em.clear();
+
+        // when
+        Page<Post> page = hashtagService.findPostsByHashtagId(hashtag.getId(), 0, 5);
+        List<Post> content = page.getContent();
+
+        // then
+        assertThat(content.size()).isEqualTo(1);
+        assertThat(page.getTotalPages()).isEqualTo(1);
+        assertThat(page.getTotalElements()).isEqualTo(1);
+        assertThat(page.getNumber()).isEqualTo(0);
+    }
 }
