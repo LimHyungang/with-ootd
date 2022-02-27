@@ -48,7 +48,7 @@ class BanServiceImplTest {
         Ban ban2 = banService.save(member2.getId(), member1.getId());
 
         // when
-        banService.deleteBan(ban1.getId());
+        banService.delete(ban1.getId());
         List<Ban> banList = banService.findAllByMemberId(ban1.getId());
 
         // then

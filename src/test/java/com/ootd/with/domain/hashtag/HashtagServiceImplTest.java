@@ -1,5 +1,6 @@
 package com.ootd.with.domain.hashtag;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.post.PostHashtag;
 import com.ootd.with.domain.post.PostHashtagRepository;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -50,7 +53,7 @@ class HashtagServiceImplTest {
     }
 
     @Test
-    public void findPostsByHashtagIdTest() {
+    public void findPostsByHashtagIdAndStatusTypeTest() {
         // given
         Hashtag hashtag = new Hashtag("hashtag");
         hashtagService.save(hashtag);
@@ -60,10 +63,11 @@ class HashtagServiceImplTest {
         postHashtagRepository.save(ph);
 
         em.flush();
-        em.clear();
+        em.clear()  ;
 
         // when
-        Page<Post> page = hashtagService.findPostsByHashtagId(hashtag.getId(), 0, 5);
+        PageRequest pageRequest = PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "createdDate"));
+        Page<Post> page = hashtagService.findPostsByHashtagNameAndStatusType(hashtag.getName(), StatusType.NORMAL, pageRequest);
         List<Post> content = page.getContent();
 
         // then

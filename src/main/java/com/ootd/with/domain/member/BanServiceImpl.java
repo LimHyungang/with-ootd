@@ -17,15 +17,11 @@ public class BanServiceImpl implements BanService {
 
     @Override
     public List<Ban> findAllByMemberId(Long memberId) {
-        // TODO : 행위 주체 member 의 상태 체크 추가개발
-
         return banRepository.findAllByMemberId(memberId);
     }
 
     @Override
     public Ban save(Long memberId, Long bannedMemberId) {
-        // TODO : 행위 주체 member 의 상태 체크 추가개발
-
         // null 인 경우는 없다
         Member member = memberRepository.findById(memberId).orElse(null);
         Member bannedMember = memberRepository.findById(bannedMemberId).orElse(null);
@@ -39,9 +35,7 @@ public class BanServiceImpl implements BanService {
     }
 
     @Override
-    public void deleteBan(Long banId) {
-        // TODO : 행위 주체 member 의 상태 체크 추가개발
-
+    public void delete(Long banId) {
         // ban, member 둘 다 null 인 경우 고려할 필요 없음
 
         Ban ban = banRepository.findById(banId).orElse(null);
