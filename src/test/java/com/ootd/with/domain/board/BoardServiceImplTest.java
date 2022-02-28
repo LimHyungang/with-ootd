@@ -162,14 +162,14 @@ class BoardServiceImplTest {
         Board board1 = boardRepository.save(new Board("board1", StatusType.NORMAL));
         Board board2 = boardRepository.save(new Board("board2", StatusType.NORMAL));
 
-        for(int i = 0; i < 10; i++) {
-            Post post = new Post(member1, board1, "board1 title" + i, "board1 content" + i, 0);
-            postRepository.save(post);
-        }
-        for(int i = 0; i < 10; i++) {
-            Post post = new Post(member2, board2, "board2 title" + i, "board2 content" + i, 0);
-            postRepository.save(post);
-        }
+//        for(int i = 0; i < 10; i++) {
+//            Post post = new Post(member1, board1, "board1 title" + i, "board1 content" + i, 0);
+//            postRepository.save(post);
+//        }
+//        for(int i = 0; i < 10; i++) {
+//            Post post = new Post(member2, board2, "board2 title" + i, "board2 content" + i, 0);
+//            postRepository.save(post);
+//        }
 
         em.flush();
         em.clear();
