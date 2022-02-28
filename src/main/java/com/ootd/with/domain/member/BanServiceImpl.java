@@ -1,12 +1,10 @@
 package com.ootd.with.domain.member;
 
 import com.ootd.with.domain.enumtype.StatusType;
-import jdk.jshell.Snippet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -30,7 +28,10 @@ public class BanServiceImpl implements BanService {
             return null;
         }
 
-        Ban ban = new Ban(member, bannedMember);
+        Ban ban = Ban.builder()
+                .member(member)
+                .bannedMember(bannedMember)
+                .build();
         return banRepository.save(ban);
     }
 

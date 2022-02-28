@@ -15,18 +15,16 @@ public class HashtagServiceImpl implements HashtagService {
 
     private final HashtagRepository hashtagRepository;
 
-    /**
-     * post 에 hashtag 등록 시 사용될 hashtag 등록
-     * 1. 이미 존재하는 hashtag
-     *   -> 그대로 반환
-     * 2. 존재하지 않는 hashtag
-     *   -> 저장 후 반환
-     */
     @Override
-    public Hashtag save(Hashtag hashtag) {
-        Hashtag findHashtag = hashtagRepository.findByName(hashtag.getName()).orElse(null);
+    public Hashtag save(String hashtagName) {
+        Hashtag findHashtag = hashtagRepository.findByName(hashtagName).orElse(null);
         if(findHashtag == null) {
-            // hashtag 와 post 의 객체 레벨 연결은 post 등록 시에 하는 것으로
+            Hashtag hashtag = Hashtag.builder()
+                    .name(hashtagName)
+                    .build();
+            // 이 시점에서는 post hashtag 와의 연관관계 편의 맞출 필요 없다
+            // hashtag 등록만 했을 뿐 아직 post 에 연결은 하기 전임
+            // post 등록에서 이 메서드를 호출한 이후 post hashtag 를 만들 때 맞춰준다
             return hashtagRepository.save(hashtag);
         }else {
             return findHashtag;

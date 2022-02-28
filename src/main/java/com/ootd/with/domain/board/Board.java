@@ -5,6 +5,7 @@ import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.web.board.CreateBoardForm;
 import com.ootd.with.web.board.UpdateBoardForm;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Board extends BaseTimeEntity {
 
@@ -33,9 +34,9 @@ public class Board extends BaseTimeEntity {
     private StatusType statusType;
 
     @Builder
-    public Board(String name, StatusType type) {
+    public Board(String name, StatusType statusType) {
         this.name = name;
-        this.statusType = type;
+        this.statusType = statusType;
     }
 
     public void changeStatus(StatusType type) {
@@ -43,16 +44,14 @@ public class Board extends BaseTimeEntity {
     }
 
     public static Board createBoard(CreateBoardForm form) {
-        Board board = new Board();
-        BeanUtils.copyProperties(form, board);
+        Board board = Board.builder()
+                .name(form.getName())
+                .statusType(form.getStatusType())
+                .build();
         return board;
     }
 
     public void updateBoard(UpdateBoardForm form) {
-        // 이건 수정 필요할 듯
-        // 이렇게 하면 form 의 null, "" 등도 전부 this 로 넘어감
-//        BeanUtils.copyProperties(form, this);  // 왜 안 되지..?
-
         if(form.getName() != null) this.name = form.getName();
         if(form.getStatusType() != null) this.statusType = form.getStatusType();
     }
