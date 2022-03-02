@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface HashtagService {
 
-    Hashtag save(Hashtag hashtag);  // 등록
+    Hashtag save(String hashtagName);  // 등록
 
     List<Hashtag> findAllByPostId(Long postId);  // 목록 조회 (post 조회 시)
 

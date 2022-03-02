@@ -25,23 +25,23 @@ class HashtagRepositoryTest {
     @Autowired PostRepository postRepository;
     @Autowired HashtagRepository hashtagRepository;
 
-    @Test
-    public void findAllByPostIdTest() {
-        // given
-        Hashtag hashtag = new Hashtag("hashtag");
-        hashtagRepository.save(hashtag);
-
-        Post post = new Post();
-        postRepository.save(post);
-
-        post.getHashtagList().add(new PostHashtag(post, hashtag));
-        em.flush();
-        em.close();
-
-        // when
-        List<Hashtag> hashtagList = hashtagRepository.findAllByPostId(post.getId());
-
-        // then
-        assertThat(hashtagList.size()).isEqualTo(1);
-    }
+//    @Test
+//    public void findAllByPostIdTest() {
+//        // given
+//        Hashtag hashtag = new Hashtag("hashtag");
+//        hashtagRepository.save(hashtag);
+//
+//        Post post = new Post();
+//        postRepository.save(post);
+//
+//        post.getHashtagList().add(new PostHashtag(post, hashtag));
+//        em.flush();
+//        em.close();
+//
+//        // when
+//        List<Hashtag> hashtagList = hashtagRepository.findAllByPostId(post.getId());
+//
+//        // then
+//        assertThat(hashtagList.size()).isEqualTo(1);
+//    }
 }

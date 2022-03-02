@@ -32,48 +32,48 @@ class HashtagServiceImplTest {
     @Autowired PostRepository postRepository;
     @Autowired PostHashtagRepository postHashtagRepository;
 
-    @Test
-    public void findAllByPostIdTest() {
-        // given
-        Hashtag hashtag = new Hashtag("hashtag");
-        hashtagService.save(hashtag);
-        Post post = new Post();
-        postRepository.save(post);
-        PostHashtag ph = new PostHashtag(post, hashtag);
-        postHashtagRepository.save(ph);
+//    @Test
+//    public void findAllByPostIdTest() {
+//        // given
+//        Hashtag hashtag = new Hashtag("hashtag");
+//        hashtagService.save(hashtag);
+//        Post post = new Post();
+//        postRepository.save(post);
+//        PostHashtag ph = new PostHashtag(post, hashtag);
+//        postHashtagRepository.save(ph);
+//
+//        em.flush();
+//        em.clear();
+//
+//        // when
+//        List<Hashtag> hashtagList = hashtagService.findAllByPostId(post.getId());
+//
+//        // then
+//        assertThat(hashtagList.size()).isEqualTo(1);
+//    }
 
-        em.flush();
-        em.clear();
-
-        // when
-        List<Hashtag> hashtagList = hashtagService.findAllByPostId(post.getId());
-
-        // then
-        assertThat(hashtagList.size()).isEqualTo(1);
-    }
-
-    @Test
-    public void findPostsByHashtagIdAndStatusTypeTest() {
-        // given
-        Hashtag hashtag = new Hashtag("hashtag");
-        hashtagService.save(hashtag);
-        Post post = new Post();
-        postRepository.save(post);
-        PostHashtag ph = new PostHashtag(post, hashtag);
-        postHashtagRepository.save(ph);
-
-        em.flush();
-        em.clear()  ;
-
-        // when
-        PageRequest pageRequest = PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "createdDate"));
-        Page<Post> page = hashtagService.findPostsByHashtagNameAndStatusType(hashtag.getName(), StatusType.NORMAL, pageRequest);
-        List<Post> content = page.getContent();
-
-        // then
-        assertThat(content.size()).isEqualTo(1);
-        assertThat(page.getTotalPages()).isEqualTo(1);
-        assertThat(page.getTotalElements()).isEqualTo(1);
-        assertThat(page.getNumber()).isEqualTo(0);
-    }
+//    @Test
+//    public void findPostsByHashtagIdAndStatusTypeTest() {
+//        // given
+//        Hashtag hashtag = new Hashtag("hashtag");
+//        hashtagService.save(hashtag);
+//        Post post = new Post();
+//        postRepository.save(post);
+//        PostHashtag ph = new PostHashtag(post, hashtag);
+//        postHashtagRepository.save(ph);
+//
+//        em.flush();
+//        em.clear()  ;
+//
+//        // when
+//        PageRequest pageRequest = PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "createdDate"));
+//        Page<Post> page = hashtagService.findPostsByHashtagNameAndStatusType(hashtag.getName(), StatusType.NORMAL, pageRequest);
+//        List<Post> content = page.getContent();
+//
+//        // then
+//        assertThat(content.size()).isEqualTo(1);
+//        assertThat(page.getTotalPages()).isEqualTo(1);
+//        assertThat(page.getTotalElements()).isEqualTo(1);
+//        assertThat(page.getNumber()).isEqualTo(0);
+//    }
 }
