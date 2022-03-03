@@ -3,6 +3,7 @@ package com.ootd.with.domain.board;
 import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.member.Member;
 import com.ootd.with.domain.member.MemberRepository;
+import com.ootd.with.domain.member.PhoneNumber;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.post.PostRepository;
 import com.ootd.with.web.board.CreateBoardForm;
@@ -154,10 +155,10 @@ class BoardServiceImplTest {
     @BeforeEach
     public void init() {
         Member member1 = memberRepository.save(new Member("임현강", "asdf", "hyungang7@gmail.com",
-                "010", "6878", "1422",
+                new PhoneNumber("010", "6878", "1422"),
                 "MALE", "헤으응"));
         Member member2 = memberRepository.save(new Member("정우용", "asdf", "wooyong7@gmail.com",
-                "010", "1234", "5678",
+                new PhoneNumber("010", "1234", "5678"),
                 "MALE", "헤우웅"));
         Board board1 = boardRepository.save(new Board("board1", StatusType.NORMAL));
         Board board2 = boardRepository.save(new Board("board2", StatusType.NORMAL));

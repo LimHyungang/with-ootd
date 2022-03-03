@@ -11,21 +11,22 @@ import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.member.Member;
 import com.ootd.with.domain.member.MemberRepository;
 import com.ootd.with.domain.member.MemberService;
+import com.ootd.with.domain.member.PhoneNumber;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.post.PostLikey;
 import com.ootd.with.domain.post.PostRepository;
-import com.ootd.with.web.member.AddMemberForm;
+import com.ootd.with.web.member.CreateMemberForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.parameters.P;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest
@@ -92,13 +93,11 @@ class LikeyServiceTest {
     @DisplayName("Post 좋아요 테스트")
     public void savePostLikey() throws Exception {
         //given
-        AddMemberForm form = new AddMemberForm();
+        CreateMemberForm form = new CreateMemberForm();
         form.setName("테스터2");
         form.setEmail("test2@test.com");
         form.setPassword("test!");
-        form.setFirstPhoneNumber("010");
-        form.setMidPhoneNumber("1234");
-        form.setLastPhoneNumber("5678");
+        form.setPhoneNumber(new PhoneNumber("010", "1234", "5678"));
         form.setNickName("Tester2");
         form.setSexType(SexType.FEMALE.name());
 
@@ -141,13 +140,11 @@ class LikeyServiceTest {
     @DisplayName("Comment 좋아요 테스트")
     public void saveCommentLikey() throws Exception {
         //given
-        AddMemberForm form = new AddMemberForm();
+        CreateMemberForm form = new CreateMemberForm();
         form.setName("테스터2");
         form.setEmail("test2@test.com");
         form.setPassword("test!");
-        form.setFirstPhoneNumber("010");
-        form.setMidPhoneNumber("1234");
-        form.setLastPhoneNumber("5678");
+        form.setPhoneNumber(new PhoneNumber("010", "1234", "5678"));
         form.setNickName("Tester2");
         form.setSexType(SexType.FEMALE.name());
 

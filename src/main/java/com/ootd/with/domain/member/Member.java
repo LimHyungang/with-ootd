@@ -6,7 +6,8 @@ import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.enumtype.RoleType;
 import com.ootd.with.domain.enumtype.SexType;
-import com.ootd.with.web.member.AddMemberForm;
+import com.ootd.with.web.member.CreateMemberForm;
+import com.ootd.with.web.member.UpdateMemberForm;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,14 +35,8 @@ public class Member extends BaseTimeEntity {
     @NotNull
     private String email;
 
-    @NotNull
-    private String firstPhoneNumber;
-
-    @NotNull
-    private String midPhoneNumber;
-
-    @NotNull
-    private String lastPhoneNumber;
+    @Embedded
+    private PhoneNumber phoneNumber;
 
     @Enumerated(EnumType.STRING)
     @NotNull
@@ -72,30 +67,50 @@ public class Member extends BaseTimeEntity {
 
 
     @Builder
-    public Member(String name, String password, String email, String firstPhoneNumber, String midPhoneNumber, String lastPhoneNumber, String sexType, String nickName) {
+    public Member(String name, String password, String email, PhoneNumber phoneNumber, String sexType, String nickName) {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.firstPhoneNumber = firstPhoneNumber;
-        this.midPhoneNumber = midPhoneNumber;
-        this.lastPhoneNumber = lastPhoneNumber;
+        this.phoneNumber = phoneNumber;
         this.sexType = SexType.valueOf(sexType);
         this.roleType = RoleType.MEMBER;
         this.nickName = nickName;
         this.statusType = StatusType.NORMAL;
     }
 
-    public static Member addMemberFromAddMemberForm(AddMemberForm form) {
+    //==연관 관계 메서드==//
+    //Member 생성
+    public static Member createMember(CreateMemberForm form) {
         return Member.builder()
                 .name(form.getName())
                 .email(form.getEmail())
                 .password(form.getPassword())
-                .firstPhoneNumber(form.getFirstPhoneNumber())
-                .midPhoneNumber(form.getMidPhoneNumber())
-                .lastPhoneNumber(form.getLastPhoneNumber())
+                .phoneNumber(form.getPhoneNumber())
                 .nickName(form.getNickName())
                 .sexType(form.getSexType())
                 .build();
+    }
+
+    //Member 정보 변경
+    public void update(UpdateMemberForm form) {
+        // 이름, 핸드폰 번호, 성별, 닉네임
+        if (form.getName() != null) {
+            this.name = form.getName();
+        }
+        if (form.getPhoneNumber() != null) {
+            this.phoneNumber = form.getPhoneNumber();
+        }
+        if (form.getSexType() != null) {
+            this.sexType = SexType.valueOf(form.getSexType());
+        }
+        if (form.getNickName() != null) {
+            this.nickName = form.getNickName();
+        }
+    }
+
+    //Member 탈퇴
+    public void delete() {
+        this.statusType = StatusType.DELETED;
     }
 }
 

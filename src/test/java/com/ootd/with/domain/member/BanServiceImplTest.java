@@ -58,10 +58,10 @@ class BanServiceImplTest {
     @BeforeEach
     public void init() {
         Member member1 = memberRepository.save(new Member("임현강", "asdf", "hyungang7@gmail.com",
-                "010", "6878", "1422",
+                new PhoneNumber("010", "6878", "1422"),
                 "MALE", "헤으응"));
         Member member2 = memberRepository.save(new Member("정우용", "asdf", "wooyong7@gmail.com",
-                "010", "1234", "5678",
+                new PhoneNumber("010", "1234", "5678"),
                 "MALE", "헤우웅"));
     }
 }

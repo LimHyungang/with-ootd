@@ -5,7 +5,7 @@ import com.ootd.with.domain.board.BoardRepository;
 import com.ootd.with.domain.enumtype.SexType;
 import com.ootd.with.domain.post.Post;
 import com.ootd.with.domain.post.PostRepository;
-import com.ootd.with.web.member.AddMemberForm;
+import com.ootd.with.web.member.CreateMemberForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,10 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest
@@ -72,13 +69,11 @@ class BookmarkServiceTest {
     @DisplayName("북마크 등록 테스트")
     public void bookmark() throws Exception {
         //given
-        AddMemberForm form = new AddMemberForm();
+        CreateMemberForm form = new CreateMemberForm();
         form.setName("테스터2");
         form.setEmail("test2@test.com");
         form.setPassword("test!");
-        form.setFirstPhoneNumber("010");
-        form.setMidPhoneNumber("1234");
-        form.setLastPhoneNumber("5678");
+        form.setPhoneNumber(new PhoneNumber("010", "1234", "5678"));
         form.setNickName("Tester2");
         form.setSexType(SexType.FEMALE.name());
 
