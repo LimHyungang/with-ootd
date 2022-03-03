@@ -89,7 +89,7 @@ class BookmarkServiceTest {
 
         //when
         bookmarkService.bookmark(member.getId(), post.getId());
-        Bookmark findBookmark = bookmarkService.findOne(member.getId(), post.getId());
+        Bookmark findBookmark = bookmarkService.findByMemberIdAndPostId(member.getId(), post.getId());
 
         //then
         assertThat(findBookmark).isNotNull();
@@ -110,7 +110,7 @@ class BookmarkServiceTest {
         bookmarkService.bookmark(member.getId(), post.getId());
 
         //then
-        assertThat(bookmarkService.findOne(member.getId(), post.getId())).isNull();
+        assertThat(bookmarkService.findByMemberIdAndPostId(member.getId(), post.getId())).isNull();
     }
 
 
