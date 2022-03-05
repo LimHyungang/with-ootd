@@ -42,8 +42,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void update(Long memberId, UpdateMemberForm form) {
-        Member member = findById(memberId);
+    public void update(Member member, UpdateMemberForm form) {
         member.update(form);
     }
 
