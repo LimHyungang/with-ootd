@@ -1,5 +1,6 @@
 package com.ootd.with.domain.member;
 
+import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.web.login.LoginForm;
 import com.ootd.with.web.member.CreateMemberForm;
 import com.ootd.with.web.member.UpdateMemberForm;
@@ -41,15 +42,15 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void update(UpdateMemberForm form) {
-        Member member = findById(form.getId());
+    public void update(Long memberId, UpdateMemberForm form) {
+        Member member = findById(memberId);
         member.update(form);
     }
 
     @Override
     public void delete(Long memberId) {
         Member member = findById(memberId);
-        member.delete();
+        member.changeStatus(StatusType.DELETED);
     }
 
 }

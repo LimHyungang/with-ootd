@@ -108,9 +108,9 @@ public class Member extends BaseTimeEntity {
         }
     }
 
-    //Member 탈퇴
-    public void delete() {
-        this.statusType = StatusType.DELETED;
+    //Member Status 변경
+    public void changeStatus(StatusType statusType) {
+        this.statusType = statusType;
     }
 }
 

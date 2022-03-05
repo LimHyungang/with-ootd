@@ -9,6 +9,6 @@ public interface MemberService {
     Member login(LoginForm form);
     Member findById(Long memberId);
     Member findByEmail(String email);
-    void update(UpdateMemberForm form);
+    void update(Long memberId, UpdateMemberForm form);
     void delete(Long memberId);
 }
