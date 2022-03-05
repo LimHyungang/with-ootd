@@ -5,6 +5,7 @@ import com.ootd.with.domain.board.BoardRepository;
 import com.ootd.with.domain.enumtype.StatusType;
 import com.ootd.with.domain.member.Member;
 import com.ootd.with.domain.member.MemberRepository;
+import com.ootd.with.domain.member.PhoneNumber;
 import com.ootd.with.web.post.CreatePostForm;
 import com.ootd.with.web.post.UpdatePostForm;
 import org.junit.jupiter.api.BeforeEach;
@@ -103,7 +104,7 @@ class PostServiceImplTest {
     @BeforeEach
     public void init() {
         Member member1 = memberRepository.save(new Member("임현강", "asdf", "hyungang7@gmail.com",
-                "010", "6878", "1422",
+                new PhoneNumber("010", "6878", "1422"),
                 "MALE", "헤으응"));
         Board board1 = boardRepository.save(new Board("board1", StatusType.NORMAL));
 
